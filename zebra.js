@@ -107,8 +107,7 @@
     ]
   ];
 
-  var w = window.innerWidth;
-  var h = window.innerHeight;
+  var w, h;
 
   var index = 0;
   var direction = 1;
@@ -121,7 +120,6 @@
       width: w,
       height: h
     });
-    animateToData(DATA_SETS[index]);
   };
   window.onresize();
 
@@ -153,6 +151,7 @@
     animateToData(DATA_SETS[index]);
   }
 
+  animateToData(DATA_SETS[0]);
   nextDataSet();
   setInterval(nextDataSet, ANIMATION_DURATION * 1.1);
 
