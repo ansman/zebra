@@ -149,10 +149,12 @@
 
     index += direction;
     animateToData(DATA_SETS[index]);
+    var duration = ANIMATION_DURATION * 1.1;
+    if (index + 1 == DATA_SETS.length) duration *= 2;
+    setTimeout(nextDataSet, duration);
   }
 
   animateToData(DATA_SETS[0]);
   nextDataSet();
-  setInterval(nextDataSet, ANIMATION_DURATION * 1.1);
 
 }).call(this, window, document, d3);
