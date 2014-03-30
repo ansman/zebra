@@ -8,4 +8,5 @@ html, body {
 svg line {
   stroke: #000;
   stroke-width: 10px;
+  shape-rendering: crispEdges;
 }
