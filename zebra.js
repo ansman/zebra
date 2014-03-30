@@ -114,8 +114,8 @@
   var svg = d3.select('body').append("svg");
 
   window.onresize = function() {
-    w = window.innerWidth;
-    h = window.innerHeight;
+    w = document.body.offsetWidth;
+    h = document.body.offsetHeight;
     svg.attr({
       width: w,
       height: h
