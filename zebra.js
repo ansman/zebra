@@ -110,7 +110,7 @@
   var w = window.innerWidth;
   var h = window.innerHeight;
 
-  var index = -1;
+  var index = 0;
   var direction = 1;
   var svg = d3.select('body').append("svg");
 
@@ -121,6 +121,7 @@
       width: w,
       height: h
     });
+    animateToData(DATA_SETS[index]);
   };
   window.onresize();
 
@@ -138,12 +139,10 @@
       .data(data, function(d, n) { return d.id; });
 
     updateLines(lines.enter().append("line"));
-    updateLines(lines.transition()
-        .duration(ANIMATION_DURATION)
-        .ease(data.ease || 'cubic-in-out'));
+    updateLines(lines.transition().duration(ANIMATION_DURATION));
   }
 
-  function nextDataSet(standalone) {
+  function nextDataSet() {
     if (index + direction >= DATA_SETS.length) {
       direction = -1;
     } else if (index + direction < 0) {
@@ -152,13 +151,9 @@
 
     index += direction;
     animateToData(DATA_SETS[index]);
-
-    if (!standalone) {
-      setTimeout(nextDataSet, ANIMATION_DURATION * 1.1);
-    }
   }
 
-  nextDataSet(true);
   nextDataSet();
+  setInterval(nextDataSet, ANIMATION_DURATION * 1.1);
 
 }).call(this, window, document, d3);
