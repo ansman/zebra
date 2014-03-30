@@ -1,0 +1,8 @@
+html, body {
+  margin: 0;
+}
+
+svg line {
+  stroke: #000;
+  stroke-width: 10px;
+}
